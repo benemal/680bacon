@@ -1,0 +1,30 @@
+#summary Algorithm of __bacon__
+
+= Introduction =
+
+(there may be something missing...Grant)
+
+
+= Details =
+
+== MovieProcessor ==
+  # For each movie
+    # Find the actor with the lowest bacon#.
+      # if such an actor exists
+        * insert that actor into the tree. All other actors become leaves of that actor.
+      # otherwise...
+        * put that movie into the unknown list
+  # After all of the input is done.
+    # For each list in the BaconTree's levelList (from lowest to highest)
+      # for each actor in the list
+        # search the unknown movies for that actor.
+          # if a movie is found
+            # All other actors in the movie become leaves of that actor.
+            # Remove that movie from the unknown list.
+
+== BaconTree ==
+inserting an actor A with parent P
+  # set A's parent pointer to P
+  # set A's bacon# to P's bacon# + 1
+  # add (A->actorName, &A) to map.
+  # add &A to levelList[A->baconNumber] 
