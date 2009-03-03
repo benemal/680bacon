@@ -66,12 +66,11 @@ public:
 class Parser {
 	public:
     // parse input (movie Names, actors)
+    ifstream *inputstream;
 
-    Parser(string inputFile) {
-	//
-    }
+    Parser(string inputFile); //
     
-    class Movie getNextMovie() {
+    class Movie* getNextMovie(); /*{
 		string movieName;
 		// Get movie name
 		class Movie result(movieName);
@@ -82,7 +81,7 @@ class Parser {
 	// 	class Movie m(getNextMovie());
 
 		return result;
-    }
+    }*/
 };
 
 class MovieProcessor {
