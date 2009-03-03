@@ -48,34 +48,19 @@ class Movie {
 private:
 	vector<string> actorNames;
 public:
-    string name;
+    string movieName;
 
-    Movie(string name) {
-	this->name = name;
-	//Handle list instantiation
-    }
+    Movie(string movieName);
        
-    bool actorIn(string actor) {
-	// Returns true if actor is in movie
-    }
+    bool actorIn(string actor);
 
-    void insertActor(string actor) {
-	// insert actor into list
-    }
+    void insertActor(string actor);
 
-    void removeActor(string actor) {
-	// removes actor from list
-    }
+    void removeActor(string actor);
 
-    string popActor() {
-		string actorName;
-		// pop all actors from the list one at a time
-		return actorName;
-    }
+    string popActor();
 
-    int length() {
-	// return size of list
-    }
+    int length();
 };
 
 class Parser {
