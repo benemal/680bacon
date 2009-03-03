@@ -43,6 +43,7 @@
 	for(int i = 0; i < actorNames.size(); i++){
 	  return  actorNames.at(i);
 	}
+	actorNames.clear();
       }
 
    int Movie::length(){
