@@ -35,13 +35,9 @@ public:
 
     vector<vector<class TreeNode *> > levelList;
 
-    void AddTreeNode(class TreeNode * t, class TreeNode * parent) {
-	//adds the given node to the tree
-    }
+    void AddTreeNode(class TreeNode * t, class TreeNode * parent); 
 
-    bool IsActorInTree(string name) {
-	//
-    }
+    bool IsActorInTree(string name);
 };   
 
 class Movie {
@@ -89,18 +85,12 @@ private:
     vector<class Movie> unknownMovies;
     class Parser *p;
     
-    void ProcessMovie(class Movie m) {
-	//
-    }
+    void ProcessMovie(class Movie m);
 
 public:
-    class BaconTree ProcessInput() {
-	//
-    }
+    class BaconTree ProcessInput(); 
 
-    MovieProcessor(string inputFile) {
-		p = new Parser(inputFile);
-    }
+    MovieProcessor(string inputFile);
 };
 
 // List of functions to be implemented
