@@ -41,6 +41,8 @@ public:
 
     void AddTreeNode(class TreeNode * t, class TreeNode * parent); 
 
+	void AddActor(string actorName, string movieName, class TreeNode *parent);
+
     bool IsActorInTree(string actorName);
 
 	class TreeNode* getTreeNode(string actorName);
@@ -92,6 +94,7 @@ class MovieProcessor {
 private:
     vector<class Movie> unknownMovies;
     class Parser *p;
+	BaconTree bacontree;
     
     void ProcessMovie(class Movie m);
 
