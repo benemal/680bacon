@@ -1,3 +1,6 @@
+#ifndef BACON
+#define BACON
+
 #include <string>
 #include <vector>
 #include <map>
@@ -11,11 +14,14 @@ struct eqstr {
 };
 
 class TreeNode {
+private:
+    class TreeNode* parent;
+
 public:
+	friend class BaconTree;
     string actorName;
     int baconNumber; 
     string movieName;
-    class TreeNode* parent;
 
     TreeNode(string actor, string movie) {
 	this->actorName = actor;
@@ -28,16 +34,18 @@ public:
 
 class BaconTree {
 public:
-    TreeNode root; //bacon# 0
+    TreeNode *root; //bacon# 0
 	map<string, class TreeNode*> actor_hash;
-    //HashTable<string> actors  // hashtable of actors in the Bacon
-    //tree
 
     vector<vector<class TreeNode *> > levelList;
 
     void AddTreeNode(class TreeNode * t, class TreeNode * parent); 
 
-    bool IsActorInTree(string name);
+    bool IsActorInTree(string actorName);
+
+	class TreeNode* getTreeNode(string actorName);
+
+	BaconTree(); 
 };   
 
 class Movie {
@@ -96,3 +104,4 @@ public:
 // List of functions to be implemented
 void OutputChain(string actorName);
 void PrintBaconChain(string actorName);
+#endif
