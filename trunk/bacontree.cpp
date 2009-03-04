@@ -41,9 +41,14 @@ BaconTree::BaconTree() {
 
 class TreeNode* BaconTree::getTreeNode(string actorName) {
 	if(IsActorInTree(actorName) {
-		return (actor_hash.find("Smith, Kevin"))->second;
+		return (actor_hash.find(actorName))->second;
 	}
 	else {
 		return NULL;
 	}
+}
+
+void BaconTree::AddActor(string actorName, string movieName, class TreeNode *parent) {
+	TreeNode *t = new TreeNode(actorName, movieName);
+	AddTreeNode(t, parent);
 }
