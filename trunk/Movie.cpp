@@ -52,8 +52,5 @@
       }
  
 	  
-int main() {
-  cout << "Programming is AWESOME...\n";
-  return 0;
-}
+
       
