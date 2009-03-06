@@ -22,25 +22,42 @@ Parser::Parser(string inputFile) {
      inputstream->close();*/
 }
 
-class Movie* Parser:: getNextMovie() {
-    string line,movieName; 
+class Movie* Parser::getNextMovie() {
+    char* pch; char* line4;
+    string line,movieName,temp;
+    vector<string> actorNames;
+    class Movie *m;
     if (!inputstream->eof())  
     {
          getline(*inputstream,line);
     }
+    
+    size_t length; int a = line.length();
 
-    //movieName = 
-    class Movie *m = new Movie(line);
+    line4 = new char [line.size()+1];
+    strcpy(line4,line.c_str());
+    pch = strtok (line4, "/");
+    int i=0;
+    while(pch != NULL)
+    {
+	if(i==0) {
+	    movieName = pch;
+	    m = new Movie(movieName);
+	    cout << m->movieName << endl;
+	}
+	if(i!=0) {
+	    m->insertActor(pch);
+	}
+	pch = strtok (NULL, "/");
+	i++;
+    }
+
+    /*cout << "actor names are:\n";
+    for(i=0; i<actorNames.size(); i++)
+	cout << actorNames[i] << endl;*/
+    //class Movie *m = new Movie(line);
+    //m->actorNames = actorNames;
     return m;
 }
 
-int main() {
-    cout << "Hello frm main()\n";
-    class Parser p = Parser("input.txt");
-    class Movie *m1;
-    m1 = p.getNextMovie();
-    cout << m1->movieName;
-    
-    return 0;
-}
     

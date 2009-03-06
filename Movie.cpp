@@ -4,8 +4,7 @@
 #include "p3.h"
 
   Movie::Movie(string name){
-    
-    this->movieName = movieName;
+    this->movieName = name;
   }
 
   bool Movie::actorIn(string actor){
