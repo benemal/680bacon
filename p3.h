@@ -100,7 +100,7 @@ private:
     void ProcessMovie(class Movie m);
 
 public:
-    class BaconTree ProcessInput(); 
+    void ProcessInput(); 
 
     MovieProcessor(string inputFile);
 };

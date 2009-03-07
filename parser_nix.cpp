@@ -38,12 +38,14 @@ class Movie* Parser::getNextMovie() {
     strcpy(line4,line.c_str());
     pch = strtok (line4, "/");
     int i=0;
+    if(pch == NULL)
+	return NULL;
     while(pch != NULL)
     {
 	if(i==0) {
 	    movieName = pch;
 	    m = new Movie(movieName);
-	    cout << m->movieName << endl;
+	    cout << "in parser :" << m->movieName << endl;
 	}
 	if(i!=0) {
 	    m->insertActor(pch);
@@ -51,12 +53,6 @@ class Movie* Parser::getNextMovie() {
 	pch = strtok (NULL, "/");
 	i++;
     }
-
-    /*cout << "actor names are:\n";
-    for(i=0; i<actorNames.size(); i++)
-	cout << actorNames[i] << endl;*/
-    //class Movie *m = new Movie(line);
-    //m->actorNames = actorNames;
     return m;
 }
 

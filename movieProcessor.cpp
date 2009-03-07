@@ -6,8 +6,8 @@ void MovieProcessor::ProcessMovie(class Movie m) {
 }
 
 
-class BaconTree MovieProcessor::ProcessInput() {
-
+void MovieProcessor::ProcessInput() {
+    
 }
 
 MovieProcessor::MovieProcessor(string inputFile) {
