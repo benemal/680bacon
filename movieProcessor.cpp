@@ -7,7 +7,6 @@ void MovieProcessor::ProcessMovie(class Movie m) {
 
 
 void MovieProcessor::ProcessInput() {
-    
 }
 
 MovieProcessor::MovieProcessor(string inputFile) {
