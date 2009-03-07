@@ -30,15 +30,14 @@ void MovieProcessor::ProcessMovie(class Movie *m) {
 	for(int i = 0; i < m->actorNames.size(); i++){
 	    if(m->actorNames[i] != "Bacon, Kevin"){
 		bacontree.AddActor(m->actorNames[i], m->movieName, min);
-		cout << m->actorNames[i] << " || " << m->movieName << " || "
-		     << min->actorName << " || " << min->baconNumber << endl;
+		/*cout << m->actorNames[i] << " || " << m->movieName << " || "
+		     << min->actorName << " || " << min->baconNumber << endl;*/
 	    }
 	}
-	cout << "==========================================================\n";
+	//cout << "==========================================================\n";
     }
 }
 
-using namespace std;
 void MovieProcessor::PrintBaconChain(string actorName) {
 	class TreeNode *t;
 
@@ -50,7 +49,8 @@ void MovieProcessor::PrintBaconChain(string actorName) {
 	t = bacontree.getTreeNode(actorName);
 
 	while( t->parent != NULL ) {
-		cout << t->actorName << "was in " << t->movieName << " with " << t->parent->actorName;
+		cout << t->actorName << " was in " << t->movieName
+		     << " with " << t->parent->actorName << endl;
 		t = t->parent;
 	}
 }
