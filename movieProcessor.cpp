@@ -40,9 +40,9 @@ void MovieProcessor::ProcessMovie(class Movie *m) {
 
 using namespace std;
 void MovieProcessor::PrintBaconChain(string actorName) {
-	class TreeNode t;
+	class TreeNode *t;
 
-	if(!(bacontree.IsActorInTree(actorName)) {
+	if(!(bacontree.IsActorInTree(actorName))) {
 		cerr << actorName << " is not on the list.\n";
 		return;
 	}
