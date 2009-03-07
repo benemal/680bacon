@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <iostream.h>
+#include <iostream>
 #include <fstream>
 #include "p3.h"
 
