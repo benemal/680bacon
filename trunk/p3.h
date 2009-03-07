@@ -51,10 +51,9 @@ public:
 };   
 
 class Movie {
-private:
-	vector<string> actorNames;
 public:
     string movieName;
+	vector<string> actorNames;
 
     Movie(string movieName);
        
@@ -67,6 +66,8 @@ public:
     string popActor();
 
     int length();
+
+	void output();
 };
 
 class Parser {

@@ -4,7 +4,12 @@
 #include "p3.h"
 
   Movie::Movie(string name){
+<<<<<<< .mine
+    
     this->movieName = name;
+=======
+    this->movieName = name;
+>>>>>>> .r14
   }
 
   bool Movie::actorIn(string actor){
@@ -50,6 +55,12 @@
 	return length;
       }
  
-	  
+void Movie::output()	{
+		std::cout << movieName << endl;
+		
+		for(int i = 0; i < actorNames.size(); i++) {
+			std::cout << actorNames[i] << endl;
+		}
+	}  
 
       
