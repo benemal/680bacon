@@ -1,4 +1,5 @@
 #include "p3.h"
+#include <iostream>
 
 void MovieProcessor::ProcessMovie(class Movie m) {
   
@@ -28,19 +29,23 @@ void MovieProcessor::ProcessMovie(class Movie m) {
 	  }
 	
 }
-      
-	     
-	     
-	      
-		  
-		  
-	       
-	       
-	    
-	    
-	    
-	  
 
+using namespace std;
+void MovieProcessor::PrintBaconChain(string actorName) {
+	class TreeNode t;
+
+	if(!(bacontree.IsActorInTree(actorName)) {
+		cerr << actorName << " is not on the list.\n";
+		return;
+	}
+
+	t = bacontree.getTreeNode(actorName);
+
+	while( t->parent != NULL ) {
+		cout << t->actorName << "was in " << t->movieName << " with " << t->parent->actorName;
+		t = t->parent;
+	}
+}
 
 void MovieProcessor::ProcessInput() {
 }
