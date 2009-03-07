@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ public:
 class Movie {
 public:
     string movieName;
-	vector<string> actorNames;
+	set<string> actorNames;
 
     Movie(string movieName);
        
@@ -64,8 +65,6 @@ public:
     string popActor();
 
     int length();
-
-	void output();
 };
 
 class Parser {

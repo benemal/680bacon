@@ -7,34 +7,28 @@ using namespace std;
 
 void MovieProcessor::ProcessMovie(class Movie *m) {
     TreeNode *min = NULL, *temp;
-    for(int i = 0; i < m->actorNames.size(); i++){
-	if(bacontree.IsActorInTree(m->actorNames[i])) {
-	    if(min == NULL){
-		min = bacontree.getTreeNode(m->actorNames[i]);
-	    }
-	    else{
-	      temp = bacontree.getTreeNode(m->actorNames[i]);
-	    }
-	    if(temp->baconNumber < min->baconNumber){
-		min = temp;
-	    }
-      }
+    for(set<string>::iterator i = m->actorNames.begin(); i != m->actorNames.end(); i++){
+		if(bacontree.IsActorInTree(*i)) {
+		    if(min == NULL){
+				min = bacontree.getTreeNode(*i);
+		    }
+		    else{
+		      temp = bacontree.getTreeNode(*i);
+			    if(temp->baconNumber < min->baconNumber){
+					min = temp;
+			    }
+			}
+		}
     }
     if(min == NULL){
       unknownMovies.push_back(*m);
-      /*for (int i=0; i<unknownMovies.size(); i++) {
-	  cout << unknownMovies[i].movieName << endl;
-      }*/
     }
     else{
-	for(int i = 0; i < m->actorNames.size(); i++){
-	    if(m->actorNames[i] != "Bacon, Kevin"){
-		bacontree.AddActor(m->actorNames[i], m->movieName, min);
-		/*cout << m->actorNames[i] << " || " << m->movieName << " || "
-		     << min->actorName << " || " << min->baconNumber << endl;*/
-	    }
-	}
-	//cout << "==========================================================\n";
+		m->actorNames.erase(min->actorName);
+
+		while(m->actorNames.size() > 0) {
+			bacontree.AddActor(m->popActor(), m->movieName, min);
+		}
     }
 }
 
@@ -57,6 +51,7 @@ void MovieProcessor::PrintBaconChain(string actorName) {
 
 void MovieProcessor::ProcessInput() {
     class Movie *m;
+
     m=p->getNextMovie();
     while (m != NULL) {
 	//cout << m->movieName << "=====================================\n";
@@ -65,6 +60,23 @@ void MovieProcessor::ProcessInput() {
 	ProcessMovie(m);
 	m = p->getNextMovie();
     }
+
+	for(int i = 0; i < bacontree.levelList.size(); i++) {
+		for(int j = 0; j < bacontree.levelList.at(i).size(); j++) {
+			for(int k = 0; k < unknownMovies.size(); k++) {
+				// is the actor at levelList[i][j] in the movie?
+				if(unknownMovies.at(k).actorIn(bacontree.levelList.at(i).at(j)->actorName)) {
+					unknownMovies.at(k).removeActor(bacontree.levelList.at(i).at(j)->actorName);
+					while(unknownMovies.at(k).actorNames.size() > 0) {
+						bacontree.AddActor(unknownMovies.at(k).popActor(), unknownMovies.at(k).movieName, bacontree.levelList.at(i).at(j));
+					}
+	
+					unknownMovies.erase(unknownMovies.begin()+k);
+					k--;
+				}
+			}
+		}
+	}
 }
  
 

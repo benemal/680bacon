@@ -10,23 +10,15 @@ Parser::Parser(string inputFile) {
 
     if (!inputstream)
      {
-         cerr << "Uh oh, Sample.dat could not be opened for reading!" << endl;
+         cerr << "Uh oh, input file could not be opened for reading!" << endl;
      }
-    
-     /*while (!inputstream->eof())  
-     {
-         string strInput;  
-         getline(*inputstream,strInput); 
-         cout << strInput << endl;  
-     }
-     inputstream->close();*/
 }
 
 class Movie* Parser::getNextMovie() {
     char* pch; char* line4;
     string line,movieName,temp;
-    vector<string> actorNames;
     class Movie *m;
+
     if (!inputstream->eof())  
     {
          getline(*inputstream,line);
