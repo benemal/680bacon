@@ -1,33 +1,41 @@
+#include <iostream>
+#include <vector>
 #include "p3.h"
 #include <iostream>
 
-void MovieProcessor::ProcessMovie(class Movie m) {
-  
-    
-  TreeNode *min = NULL, *temp;
-	for(int i = 0; i < m.actorNames.size(); i++){
+using namespace std;
 
-	  if(baconTree.isActorInTree(m.actorNames(i)){
+void MovieProcessor::ProcessMovie(class Movie *m) {
+    TreeNode *min = NULL, *temp;
+    for(int i = 0; i < m->actorNames.size(); i++){
+	if(bacontree.IsActorInTree(m->actorNames[i])) {
 	    if(min == NULL){
-	      min = baconTree.getTreeNode(m.actorNames(i));
+		min = bacontree.getTreeNode(m->actorNames[i]);
 	    }
 	    else{
-	      temp = baconTree.getTreeNode(m.actorNames(i));
+	      temp = bacontree.getTreeNode(m->actorNames[i]);
 	    }
-	  }
-	     if(temp->baconNumber < min->baconNumber){
-	      min = temp;
-	     }
-	     }
-	  if(min == NULL){
-	    unknownMovies.push_back(m);
+	    if(temp->baconNumber < min->baconNumber){
+		min = temp;
+	    }
+      }
+    }
+    if(min == NULL){
+      unknownMovies.push_back(*m);
+      /*for (int i=0; i<unknownMovies.size(); i++) {
+	  cout << unknownMovies[i].movieName << endl;
+      }*/
+    }
+    else{
+	for(int i = 0; i < m->actorNames.size(); i++){
+	    if(m->actorNames[i] != "Bacon, Kevin"){
+		bacontree.AddActor(m->actorNames[i], m->movieName, min);
+		cout << m->actorNames[i] << " || " << m->movieName << " || "
+		     << min->actorName << " || " << min->baconNumber << endl;
+	    }
 	}
-	  else{
-	    for(int i = 0; i < m.actorNames.size(); i++){
-	      baconTree.AddActor(actorNames(i), m, min);
-	    }
-	  }
-	
+	cout << "==========================================================\n";
+    }
 }
 
 using namespace std;
@@ -48,7 +56,17 @@ void MovieProcessor::PrintBaconChain(string actorName) {
 }
 
 void MovieProcessor::ProcessInput() {
+    class Movie *m;
+    m=p->getNextMovie();
+    while (m != NULL) {
+	//cout << m->movieName << "=====================================\n";
+	//for(int i=0; i<m->actorNames.size(); i++)
+	    //cout << m->actorNames[i] << endl;
+	ProcessMovie(m);
+	m = p->getNextMovie();
+    }
 }
+ 
 
 MovieProcessor::MovieProcessor(string inputFile) {
 	p = new Parser(inputFile);
