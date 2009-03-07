@@ -1,4 +1,5 @@
 #include "p3.h"
+#include <iostream>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ int main(int argc, char **argv) {
 	string user_input;
 
 	if(argc < 2) {
-		stderr << "Usage: bacon <input file name>\n";
+		cerr << "Usage: bacon <input file name>\n";
 		return 1;
 	}
 
@@ -15,10 +16,10 @@ int main(int argc, char **argv) {
 
 	mp->ProcessInput();
 
-	stdin >> user_input;
+	cin >> user_input;
 
 	while(!(user_input == "quit")) {
-		PrintBaconChain(user_input);
+		mp->PrintBaconChain(user_input);
 	}
 
 	return 0;

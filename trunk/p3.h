@@ -14,14 +14,12 @@ struct eqstr {
 };
 
 class TreeNode {
-private:
-    class TreeNode* parent;
-
 public:
 	friend class BaconTree;
     string actorName;
     int baconNumber; 
     string movieName;
+    class TreeNode* parent;
 
     TreeNode(string actor, string movie) {
 	this->actorName = actor;
