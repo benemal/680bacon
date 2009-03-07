@@ -1,7 +1,10 @@
 #include "p3.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
+
+string query = "Input actor name: ";
 
 int main(int argc, char **argv) {
 	MovieProcessor *mp;
@@ -16,10 +19,13 @@ int main(int argc, char **argv) {
 
 	mp->ProcessInput();
 
-	cin >> user_input;
+	cout << query;
+	getline(cin, user_input);
 
 	while(!(user_input == "quit")) {
 		mp->PrintBaconChain(user_input);
+		cout << query;
+		getline(cin, user_input);
 	}
 
 	return 0;
