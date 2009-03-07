@@ -5,6 +5,7 @@
  *
  */
 #include "p3.h"
+#include <iostream>
 
 void BaconTree::AddTreeNode(class TreeNode *t, class TreeNode *parent) {
 	// node to be inserted cannot exist in tree
@@ -52,3 +53,5 @@ void BaconTree::AddActor(string actorName, string movieName, class TreeNode *par
 	TreeNode *t = new TreeNode(actorName, movieName);
 	AddTreeNode(t, parent);
 }
+
+

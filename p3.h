@@ -103,9 +103,8 @@ public:
     void ProcessInput(); 
 
     MovieProcessor(string inputFile);
+
+	void PrintBaconChain(string actorName);
 };
 
-// List of functions to be implemented
-void OutputChain(string actorName);
-void PrintBaconChain(string actorName);
 #endif
