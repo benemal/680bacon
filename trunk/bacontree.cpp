@@ -41,7 +41,7 @@ BaconTree::BaconTree() {
 }
 
 class TreeNode* BaconTree::getTreeNode(string actorName) {
-	if(IsActorInTree(actorName) {
+	if(IsActorInTree(actorName)) {
 		return (actor_hash.find(actorName))->second;
 	}
 	else {

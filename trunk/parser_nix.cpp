@@ -45,7 +45,7 @@ class Movie* Parser::getNextMovie() {
 	if(i==0) {
 	    movieName = pch;
 	    m = new Movie(movieName);
-	    cout << "in parser :" << m->movieName << endl;
+	    //cout << "in parser :" << m->movieName << endl;
 	}
 	if(i!=0) {
 	    m->insertActor(pch);

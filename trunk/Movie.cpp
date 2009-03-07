@@ -4,12 +4,7 @@
 #include "p3.h"
 
   Movie::Movie(string name){
-<<<<<<< .mine
-    
     this->movieName = name;
-=======
-    this->movieName = name;
->>>>>>> .r14
   }
 
   bool Movie::actorIn(string actor){

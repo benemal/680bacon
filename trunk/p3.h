@@ -97,7 +97,7 @@ private:
     class Parser *p;
 	BaconTree bacontree;
     
-    void ProcessMovie(class Movie m);
+    void ProcessMovie(class Movie *m);
 
 public:
     void ProcessInput(); 
