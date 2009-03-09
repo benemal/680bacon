@@ -6,29 +6,21 @@
 using namespace std;
 
 void MovieProcessor::ProcessMovie(class Movie *m) {
-    TreeNode *min = NULL, *temp;
-    for(set<string>::iterator i = m->actorNames.begin(); i != m->actorNames.end(); i++){
-		if(bacontree.IsActorInTree(*i)) {
-		    if(min == NULL){
-				min = bacontree.getTreeNode(*i);
-		    }
-		    else{
-		      temp = bacontree.getTreeNode(*i);
-			    if(temp->baconNumber < min->baconNumber){
-					min = temp;
-			    }
+	bool unknownMovie = true;
+	for(int i = 0; i < bacontree.levelList.size(); i++) {
+		for(int j = 0; j < bacontree.levelList.at(i).size(); j++) {
+			if(m->actorIn(bacontree.levelList.at(i).at(j)->actorName)) {
+				unknownMovie = false;
+				m->removeActor(bacontree.levelList.at(i).at(j)->actorName);
+				while(m->actorNames.size() > 0) {
+					bacontree.AddActor(m->popActor(), m->movieName, bacontree.levelList.at(i).at(j));
+				}
 			}
 		}
-    }
-    if(min == NULL){
+	}
+			
+    if(unknownMovie){
       unknownMovies.push_back(*m);
-    }
-    else{
-		m->actorNames.erase(min->actorName);
-
-		while(m->actorNames.size() > 0) {
-			bacontree.AddActor(m->popActor(), m->movieName, min);
-		}
     }
 }
 
@@ -42,6 +34,7 @@ void MovieProcessor::PrintBaconChain(string actorName) {
 
 	t = bacontree.getTreeNode(actorName);
 
+	cout << t->actorName << " has a bacon number of " << t->baconNumber << endl;
 	while( t->parent != NULL ) {
 		cout << t->actorName << " was in " << t->movieName
 		     << " with " << t->parent->actorName << endl;
@@ -77,9 +70,20 @@ void MovieProcessor::ProcessInput() {
 			}
 		}
 	}
+
+	PrintHeadCount();
 }
  
 
 MovieProcessor::MovieProcessor(string inputFile) {
 	p = new Parser(inputFile);
+}
+
+void MovieProcessor::PrintHeadCount() {
+	cout << "Bacon Number\tFrequency" << endl;
+	cout << "------------------------" << endl;
+
+	for(int i = 0; i < bacontree.levelList.size(); i++) {
+		cout << "\t\t" << i << "\t\t\t" << bacontree.levelList.at(i).size() << endl;
+	}
 }
