@@ -101,6 +101,8 @@ public:
 
     MovieProcessor(string inputFile);
     void PrintBaconChain(string actorName);
+
+	void PrintHeadCount();
 };
 
 // List of functions to be implemented
