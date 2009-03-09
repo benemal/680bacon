@@ -8,14 +8,16 @@
 #include <iostream>
 
 void BaconTree::AddTreeNode(class TreeNode *t, class TreeNode *parent) {
+	TreeNode *temp;
 	// node to be inserted cannot exist in tree
-	if(this->IsActorInTree(t->actorName)) {
-		return;
-	}
-
-	// parent node must exist in tree
-	if(!IsActorInTree(parent->actorName)) {
-		return;
+	if((temp = this->getTreeNode(t->actorName)) != NULL) { 
+		 if(parent->baconNumber < temp->baconNumber-1) {
+			temp->parent = parent;
+			temp->baconNumber = temp->parent->baconNumber+1;
+			temp->movieName = t->movieName;
+			delete t;
+			return;
+		 }
 	}
 
 	t->parent = parent;
@@ -43,8 +45,7 @@ BaconTree::BaconTree() {
 class TreeNode* BaconTree::getTreeNode(string actorName) {
 	if(IsActorInTree(actorName)) {
 		return (actor_hash.find(actorName))->second;
-	}
-	else {
+	} else {
 		return NULL;
 	}
 }
