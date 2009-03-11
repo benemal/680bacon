@@ -94,7 +94,7 @@ public:
 /*	reads input file and creates class Movie objects
  *
  *	Members:
- *		inputstream - strem used to read the input file.
+ *		inputstream - stream used to read the input file.
  *
  *	Methods:
  *		Parser - constructor. Creates a parser to read a given input file
@@ -112,31 +112,33 @@ public:
 /*	translates input file to a bacon tree
  *
  *	Members:
- *		private:
- *			pos - TODO
- *			it - TODO
- *			isDone - TODO
- *			unknownMovies - TODO
- *			atEnd - TODO
+ *		private: 
+ *                      it - iterator which at anytime has the value of current levellist
+ *			unknownMovies - vector to hold all 'Movie' objects
  *			p - parser to read input file
  *			bacontree - tree created from input file
  *			
  *	Methods:
  *		private:
- *			ProcessMovie - TODO ...a given movie
+ *			ProcessMovie - process each movie in the input
+ *			file partially (finds movies with Kevin
+ *			Bacon and adds the rest of movies to
+ 'unknownMovies' vector.
  *
  *		public:
- *			ProcessInput - TODO
- *			PrintBaconChain - output the relationship of a given actor to Kevin Bacon
- *			ProcessTreesNmovies - TODO
+ *			ProcessInput - processes all the movies in the
+ 'unknownmovies' vector.
+ *			PrintBaconChain - output the relationship of a
+ given actor to Kevin Bacon
+ *			ProcessTreesNmovies - finds an actor with
+minimum bacon number in each movie and
+populates the 'bacontree'.
  *
  */
 class MovieProcessor {
 private:
-    int pos; int it;
-    bool isDone;
+    int it;
     vector<class Movie> unknownMovies;
-    bool atEnd;
     class Parser *p;
     BaconTree bacontree;
     void ProcessMovie(class Movie *m);
