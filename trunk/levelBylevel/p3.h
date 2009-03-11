@@ -93,6 +93,8 @@ class Parser {
 
 class MovieProcessor {
 private:
+    int pos; int it;
+    bool isDone;
     vector<class Movie> unknownMovies;
     bool atEnd;
     class Parser *p;
