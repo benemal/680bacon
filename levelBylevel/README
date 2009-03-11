@@ -3,8 +3,8 @@ bacon - a program to relate actors to Kevin Bacon
 Developers:
 	Grant Johnson
 	Anushree Dwivedi
-	<>
-
+	Nikhil Gudikandula
+	
 Building:
 	type 'make' or 'make bacon' to build the project.
 	type 'make clean' to remove object files an executables before rebuilding.
