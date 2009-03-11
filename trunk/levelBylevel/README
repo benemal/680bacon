@@ -1,0 +1,19 @@
+bacon - a program to relate actors to Kevin Bacon
+
+Developers:
+	Grant Johnson
+	Anushree Dwivedi
+	<>
+
+Building:
+	type 'make' or 'make bacon' to build the project.
+	type 'make clean' to remove object files an executables before rebuilding.
+
+Running:
+	
+	bacon <input file name>
+
+	query format is identical to format of actor names in input file. In this case, the frmat "firstname, lastname".
+
+Input format:
+	input is a '/' delimited list of movies. There is one movie per line, and each line contains the movie name followed by the actors in that movie.
