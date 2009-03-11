@@ -55,10 +55,18 @@ void MovieProcessor::ProcessInput() {
 	it++;
     }
     
-    /*for(int q=0; q<level; q++) {
-	cout << "The size of listlevel " << q << ": " <<
-	bacontree.levelList.at(q).size() << endl; 
-    }*/
+    
+    int infinity=0;
+    for(pos = 0; pos<unknownMovies.size(); pos++) {
+	if(unknownMovies.at(pos).isKnown == false) {
+	    infinity += unknownMovies.at(pos).size();
+	}
+    }
+    
+    for(int q=0; q<level; q++) {
+	cout << "Number of actors at bacon level " << q << ": " << bacontree.levelList.at(q).size() << endl;  
+    }
+    cout << "Number of non-determined actors: " << infinity << endl;
 }
  
 
