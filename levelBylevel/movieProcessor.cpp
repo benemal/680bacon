@@ -27,6 +27,7 @@ void MovieProcessor::PrintBaconChain(string actorName) {
 
 	t = bacontree.getTreeNode(actorName);
 
+	cout << t->actorName << " has a bacon number of " << t->baconNumber << endl;
 	while( t->parent != NULL ) {
 		cout << t->actorName << " was in " << t->movieName
 		     << " with " << t->parent->actorName << endl;
@@ -59,7 +60,7 @@ void MovieProcessor::ProcessInput() {
     int infinity=0;
     for(pos = 0; pos<unknownMovies.size(); pos++) {
 	if(unknownMovies.at(pos).isKnown == false) {
-	    infinity += unknownMovies.at(pos).size();
+	    infinity += unknownMovies.at(pos).actorNames.size();
 	}
     }
     
