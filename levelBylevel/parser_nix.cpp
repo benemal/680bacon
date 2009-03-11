@@ -7,18 +7,6 @@ using namespace std;
 
 Parser::Parser(string inputFile) {
     inputstream = new ifstream(inputFile.c_str());
-    
-    if (!inputstream)
-     {
-         cerr << "Uh oh, input file could not be opened for reading!" << endl;
-     }
-     //it = inputFile.begin();
-}
-
-void Parser::RestartInput(string inputFile) {
-     inputstream->close();
-     inputstream = new ifstream(inputFile.c_str());
-    
     if (!inputstream)
      {
          cerr << "Uh oh, input file could not be opened for reading!" << endl;
@@ -26,29 +14,30 @@ void Parser::RestartInput(string inputFile) {
 }
 
 class Movie* Parser::getNextMovie() {
-    char* pch; char* line4;
+    // Reads one 'Movie' object at a time from the input file.
+    char* pch; char* charLine;
     string line,movieName,temp;
     class Movie *m;
+    int i=0;
 
     if (!inputstream->eof())  
     {
          getline(*inputstream,line);
     }
     
-    size_t length; int a = line.length();
+    charLine = new char [line.size()+1];
+    strcpy(charLine,line.c_str());
+    pch = strtok (charLine, "/");
 
-    line4 = new char [line.size()+1];
-    strcpy(line4,line.c_str());
-    pch = strtok (line4, "/");
-    int i=0;
+    //Returns NULL, if at the end of the input file.
     if(pch == NULL)
 	return NULL;
+
     while(pch != NULL)
     {
 	if(i==0) {
 	    movieName = pch;
 	    m = new Movie(movieName);
-	    //cout << "in parser :" << m->movieName << endl;
 	}
 	if(i!=0) {
 	    m->insertActor(pch);
