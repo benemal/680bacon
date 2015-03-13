@@ -1,0 +1,1 @@
+This program reads an input of movies with the actors in them, and creates a graph connecting those actors to Kevin Bacon. The user can input an actor's name, and the program will output the actor's relationship to Kevin Bacon.
